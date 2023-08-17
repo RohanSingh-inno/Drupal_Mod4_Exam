@@ -1,0 +1,10 @@
+entity.notice_data.settings:
+  title: 'Notice data'
+  description: 'Configure a Notice data entity type.'
+  route_name:  entity.notice_data.settings
+  parent: system.admin_structure
+entity.notice_data.collection:
+  title: 'Notice datas'
+  description: 'List of notice datas.'
+  route_name: entity.notice_data.collection
+  parent: system.admin_content

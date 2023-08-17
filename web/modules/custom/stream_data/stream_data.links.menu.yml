@@ -1,0 +1,6 @@
+stream_data.streams:
+  title: 'Streams'
+  description: 'This is the menu link for stream'
+  route_name: stream_data.streams
+  weight: 100
+  menu_name: 'main'

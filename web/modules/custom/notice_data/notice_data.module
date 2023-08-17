@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * Provides a notice data entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function notice_data_theme() {
+  return [
+    'notice_data' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for notice data templates.
+ *
+ * Default template: notice-data.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the notice data information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_notice_data(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function notice_data_user_cancel($edit, UserInterface $account, $method) {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish notice datas.
+      $storage = \Drupal::entityTypeManager()->getStorage('notice_data');
+      $notice_data_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->execute();
+      foreach ($storage->loadMultiple($notice_data_ids) as $notice_data) {
+        $notice_data->set('status', FALSE);
+        $notice_data->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize notice datas.
+      $storage = \Drupal::entityTypeManager()->getStorage('notice_data');
+      $notice_data_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->execute();
+      foreach ($storage->loadMultiple($notice_data_ids) as $notice_data) {
+        $notice_data->setOwnerId(0);
+        $notice_data->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function notice_data_user_predelete(UserInterface $account) {
+  // Delete notice datas.
+  $storage = \Drupal::entityTypeManager()->getStorage('notice_data');
+  $notice_data_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->execute();
+  $notice_datas = $storage->loadMultiple($notice_data_ids);
+  $storage->delete($notice_datas);
+}
+
+/**
+ * Implemets hook_api_views_query_alter().
+ */
+function notice_data_views_query_alter($view, $query) {
+  // Check if this is the specific view you want to alter.
+  if ($view->id() == 'notice_board') {
+    // Modify the sorting order using the 'orderby()' method.
+    // sort on based on price.
+    $query->addOrderBy('node_field_data', 'created', 'DESC');
+  }
+}

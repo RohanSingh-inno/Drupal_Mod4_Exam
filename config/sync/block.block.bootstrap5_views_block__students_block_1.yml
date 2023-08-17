@@ -1,0 +1,37 @@
+uuid: 4267f2da-636c-4c61-ad2f-d5eba26f2488
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.students
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - bootstrap5
+id: bootstrap5_views_block__students_block_1
+theme: bootstrap5
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:students-block_1'
+settings:
+  id: 'views_block:students-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

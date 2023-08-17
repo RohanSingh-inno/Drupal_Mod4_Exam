@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_api().
+ */
+function student_sort_views_api() {
+  return [
+    'api' => '3.x',
+  ];
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function student_sort_views_pre_render(ViewExecutable $view) {
+  // Check if the view is the one you want to target.
+  if ($view->id() == 'students') {
+    // Get the current user's roles.
+    $user = \Drupal::currentUser();
+    $roles = $user->getRoles();
+
+    // Define the role you want to filter.
+    $target_role = 'student';
+
+    // Filter out users without the target role.
+    $results = [];
+    foreach ($view->result as $result) {
+      if (in_array($target_role, $result->_entity->getRoles())) {
+        $results[] = $result;
+      }
+    }
+
+    // Update the view results.
+    $view->result = $results;
+  }
+}

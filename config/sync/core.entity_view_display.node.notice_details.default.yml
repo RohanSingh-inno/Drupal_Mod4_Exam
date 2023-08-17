@@ -1,0 +1,26 @@
+uuid: eec4ac40-7075-4952-8718-44a6b4bffa93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.notice_details.body
+    - node.type.notice_details
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: AEFeGfI369MoEBbDaKnDT8_N-btDqGqdk-tUfYsrLMo
+id: node.notice_details.default
+targetEntityType: node
+bundle: notice_details
+mode: default
+content:
+  body:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  links: true

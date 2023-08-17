@@ -1,0 +1,14 @@
+# node.type.noice.yml
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - notice_data #This is the name of the module we are using for this example
+name: 'Notice'
+type: notice_details      
+description: 'Data Regarding Notice type'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

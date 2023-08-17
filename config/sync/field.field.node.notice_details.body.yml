@@ -1,0 +1,26 @@
+uuid: 2783e0bc-20fb-40ce-b9a0-aef8618a6c5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.notice_details
+  module:
+    - text
+_core:
+  default_config_hash: IAkjdtAeO6VSKC0cziurIAzExyYRYGlz8Yzh_Ul5hUo
+id: node.notice_details.body
+field_name: body
+entity_type: node
+bundle: notice_details
+label: Body
+description: 'Body of the notice.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

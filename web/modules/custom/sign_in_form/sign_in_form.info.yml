@@ -1,0 +1,5 @@
+name: Sign In Task
+description: 'This will add new field to login Form'
+core_version_requirement: ^10
+package: custom
+type: module

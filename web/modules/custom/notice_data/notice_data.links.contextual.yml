@@ -1,0 +1,10 @@
+entity.notice_data.edit_form:
+  route_name: entity.notice_data.edit_form
+  group: notice_data
+  title: Edit
+
+entity.notice_data.delete_form:
+  route_name: entity.notice_data.delete_form
+  group: notice_data
+  title: Delete
+  weight: 10

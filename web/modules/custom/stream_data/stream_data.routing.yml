@@ -1,0 +1,7 @@
+stream_data.streams:
+  path: '/streams'
+  defaults:
+    _title: 'Budget'
+    _controller: 'Drupal\stream_data\Controller\DataController::staticContent'
+  requirements:
+    _permission: 'Administrator + Academic Head'
