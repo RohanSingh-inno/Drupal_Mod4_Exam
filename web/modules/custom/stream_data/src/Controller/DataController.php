@@ -5,12 +5,12 @@ namespace Drupal\stream_data\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 /**
- *
+ * This class is to return static data.
  */
 class DataController extends ControllerBase {
 
   /**
-   *
+   * Function returns static value.
    */
   public function staticContent() {
     return [

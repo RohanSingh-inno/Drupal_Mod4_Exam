@@ -2,10 +2,11 @@
 
 /**
  * @file
+ * THis is the .module file.
  */
 
 /**
- *
+ * Implements hook_menu_links_discovered_alter().
  */
 function stream_data_menu_links_discovered_alter(&$links) {
   // Check if the menu link is your desired link.

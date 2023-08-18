@@ -1,0 +1,5 @@
+notice_cleanup_cleanup:
+  # Run the cleanup task every day at midnight.
+  schedule: '0 0 * * *'
+  # The callback function to run.
+  callback: 'notice_data_cron'

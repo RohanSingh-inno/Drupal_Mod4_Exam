@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * THis is a .module file.
  */
 
 use Drupal\views\ViewExecutable;

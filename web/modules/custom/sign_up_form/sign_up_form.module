@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * THis is a .module file.
  */
 
 /**
@@ -15,7 +16,7 @@
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- *
+ * Implements hook_form_alter().
  */
 function sign_up_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
@@ -29,7 +30,7 @@ function sign_up_form_form_alter(&$form, FormStateInterface $form_state, $form_i
     ];
 
     $form['stream'] = [
-      '#type' => '',
+      '#type' => 'radios',
       '#title' => t('Stream'),
       '#options' => [
         'Science' => t('Science'),

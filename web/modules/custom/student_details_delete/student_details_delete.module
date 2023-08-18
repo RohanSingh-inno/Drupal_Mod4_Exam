@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * THis is a .module file.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function student_details_delete_cron() {
+  // Calculate the timestamp that is 6 months ago.
+  $six_months_ago = strtotime('-6 months');
+
+  $query = \Drupal::entityQuery('user')
+  // Filter by role.
+    ->condition('roles', 'student')
+  // Assuming 'field_graduation_date' is your graduation date field.
+    ->condition('field_graduation_date', $six_months_ago, '<');
+
+  $uids = $query->execute();
+  if (!empty($uids)) {
+    $storage = \Drupal::entityTypeManager()->getStorage('user');
+    $students = $storage->loadMultiple($uids);
+    foreach ($students as $student) {
+      $student->delete();
+    }
+  }
+}

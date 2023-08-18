@@ -26,7 +26,7 @@ function notice_data_theme() {
  *
  * @param array $variables
  *   An associative array containing:
- *   - elements: An associative array containing the notice data information and any
+ *   - elements: An associative array containing
  *     fields attached to the entity.
  *   - attributes: HTML attributes for the containing element.
  */
@@ -91,5 +91,25 @@ function notice_data_views_query_alter($view, $query) {
     // Modify the sorting order using the 'orderby()' method.
     // sort on based on price.
     $query->addOrderBy('node_field_data', 'created', 'DESC');
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function notice_data_cron() {
+  $query = \Drupal::entityQuery('node')
+  // Replace 'notice' with your content type machine name.
+    ->condition('type', 'notice')
+  // Assuming 'field_event_date' is your event date field.
+    ->condition('field_event_date', REQUEST_TIME, '<');
+
+  $nids = $query->execute();
+  if (!empty($nids)) {
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $nodes = $storage->loadMultiple($nids);
+    foreach ($nodes as $node) {
+      $node->delete();
+    }
   }
 }

@@ -1,7 +1,7 @@
 custom.signup:
   path: '/user/signup'
   defaults:
-    _title: 'Sign Up'
-    _form: 'user_register_form'
+    # _form: 'user_register_form'
+    _external:
   requirements:
     _permission: 'access content' 

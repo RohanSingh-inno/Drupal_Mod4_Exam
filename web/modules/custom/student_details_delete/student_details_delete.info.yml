@@ -1,0 +1,5 @@
+name: Student Details Delete
+core_version_requirement: ^10
+type: module
+description: 'It will automatically run  a cron function to delete the students details'
+package: custom
