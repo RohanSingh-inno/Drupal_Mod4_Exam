@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.notice_details.body
+    - field.field.node.notice_details.field_event_date
     - node.type.notice_details
   module:
+    - datetime
     - path
     - text
 _core:
@@ -29,6 +31,12 @@ content:
   created:
     type: datetime_timestamp
     weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_date:
+    type: datetime_default
+    weight: 101
     region: content
     settings: {  }
     third_party_settings: {  }
