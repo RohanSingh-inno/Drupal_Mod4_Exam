@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * THis is a .module file.
+ */
+
+/**
+ * Callback action on submit (custom method plus bas)
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function sign_up_form_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if ($form_id == 'user_register_form') {
+
+    // Code to modify your form input
+    // $form['actions']['submit']['#submit'][] = 'custom_submit_method';.
+    $form['phoneNumber'] = [
+      '#type' => 'tel',
+      '#title' => t('Phone Number'),
+    ];
+
+    $form['stream'] = [
+      '#type' => 'radios',
+      '#title' => t('Stream'),
+      '#options' => [
+        'Science' => t('Science'),
+        'Commerce' => t('Commerce'),
+        'Arts' => t('Arts'),
+      ],
+    ];
+
+    $form['joining_year'] = [
+      '#type' => 'date',
+      '#title' => t('Joining Year'),
+    ];
+
+    $form['passing_year'] = [
+      '#type' => 'date',
+      '#title' => t('Passing Year'),
+    ];
+
+    $form['password'] = [
+      '#type' => 'password',
+      '#title' => t('Password'),
+    ];
+
+  }
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function sign_up_form_menu_links_discovered_alter(&$links) {
+  // Check if the current user is anonymous.
+  $current_user = \Drupal::currentUser();
+  if ($current_user->isAnonymous()) {
+    // Create a new menu link for the "Sign Up" page.
+    $links['custom_signup'] = [
+      'title' => t('Sign Up'),
+      'route_name' => 'custom.signup',
+      // Replace with the actual route name for your sign-up page.
+      'menu_name' => 'account',
+      // The machine name of the "Account" menu.
+      'parent' => 'system.menu.account',
+    ];
+  }
+}

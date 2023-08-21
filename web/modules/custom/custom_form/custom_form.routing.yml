@@ -1,0 +1,7 @@
+custom_form.settings:
+  path: '/admin/config/system/settings'
+  defaults:
+    _title: 'Sign Up'
+    _form: 'Drupal\custom_form\Form\SettingsForm'
+  requirements:
+    _permission: 'student'

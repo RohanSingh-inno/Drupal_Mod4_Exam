@@ -1,0 +1,5 @@
+name: Notice Info
+type: module
+description: 'This is a custom module for exam task'
+package: custom
+core_version_requirement: ^10

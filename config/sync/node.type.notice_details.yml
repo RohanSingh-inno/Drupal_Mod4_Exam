@@ -1,0 +1,16 @@
+uuid: f03945e1-44a6-48bb-8931-982bf932c222
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - notice_data
+_core:
+  default_config_hash: 2FX4HHTJsx2QqkwhvAbWfoInmKdV2CZCwYGw1OFt08o
+name: Notice
+type: notice_details
+description: 'Data Regarding Notice type'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

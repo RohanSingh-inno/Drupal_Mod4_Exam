@@ -1,0 +1,3 @@
+administer notice data:
+  title: 'Administer notice data settings'
+  restrict access: true

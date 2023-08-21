@@ -1,0 +1,9 @@
+uuid: 41f76d96-97be-4e49-a96f-dcfcb6347dd7
+langcode: en
+status: true
+dependencies: {  }
+id: academic_head
+label: 'Academic Head'
+weight: 4
+is_admin: null
+permissions: {  }

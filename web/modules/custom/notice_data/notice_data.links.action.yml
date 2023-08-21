@@ -1,0 +1,5 @@
+notice_data.add_form:
+  title: 'Add notice data'
+  route_name: entity.notice_data.add_form
+  appears_on:
+    - entity.notice_data.collection

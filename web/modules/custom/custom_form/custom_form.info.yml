@@ -1,0 +1,5 @@
+name: Sign Up
+type: module
+core_version_requirement: ^10
+description: 'This is the Sign Up page'
+package: custom

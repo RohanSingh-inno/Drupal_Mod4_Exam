@@ -1,0 +1,5 @@
+name: Student Sort
+type: module
+package: custom
+description: 'this will sort the student on homepage'
+core_version_requirement: ^10

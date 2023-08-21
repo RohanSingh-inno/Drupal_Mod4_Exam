@@ -1,0 +1,7 @@
+entity.notice_data.settings:
+  path: 'admin/structure/notice-data'
+  defaults:
+    _form: '\Drupal\notice_data\Form\NoticeDataSettingsForm'
+    _title: 'Notice data'
+  requirements:
+    _permission: 'administer notice data'

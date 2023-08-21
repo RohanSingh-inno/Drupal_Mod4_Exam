@@ -1,0 +1,4 @@
+routing permission:
+  title: 'Random Permission'
+  description: 'Route will be accesible to only anonymous user'
+  restrict access: true

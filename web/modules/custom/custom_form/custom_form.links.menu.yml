@@ -1,0 +1,5 @@
+custom_form.settings:
+  title: Sign Up
+  menu_name: 'account'
+  route_name: custom_form.settings
+  weight: 100
